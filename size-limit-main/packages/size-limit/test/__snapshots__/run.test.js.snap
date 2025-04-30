@@ -1,0 +1,613 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`find plugins in parent package.json 1`] = `
+"  
+  Size limit: [32m[1m1 kB[22m[39m
+  Size:       [32m[1m1 B [22m[39m [90mbrotlied[39m
+  
+"
+`;
+
+exports[`returns zero for empty esbuild file and with gzip 1`] = `
+"  
+  Size limit: [32m[1m0 B[22m[39m
+  Size:       [32m[1m0 B[22m[39m [90mwith all dependencies, minified and gzipped[39m
+  
+"
+`;
+
+exports[`returns zero for empty esbuild file and without compression 1`] = `
+"  
+  Size limit: [32m[1m0 B[22m[39m
+  Size:       [32m[1m0 B[22m[39m [90mwith all dependencies and minified[39m
+  
+"
+`;
+
+exports[`returns zero for empty file with esbuild 1`] = `
+"  
+  Size limit: [32m[1m0 B[22m[39m
+  Size:       [32m[1m0 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  
+"
+`;
+
+exports[`returns zero for empty file with webpack 1`] = `
+"  
+  Size limit: [32m[1m0 B[22m[39m
+  Size:       [32m[1m0 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  
+"
+`;
+
+exports[`returns zero for empty webpack file without compression 1`] = `
+"  
+  Size limit: [32m[1m0 B[22m[39m
+  Size:       [32m[1m0 B[22m[39m [90mwith all dependencies and minified[39m
+  
+"
+`;
+
+exports[`shows debug 1`] = `
+"{
+  "cwd": "/tmp/",
+  "configPath": "package.json",
+  "checks": [
+    {
+      "limit": "200 B",
+      "files": [
+        "/fixtures/integration/index.js"
+      ],
+      "name": "index.js",
+      "sizeLimit": 200,
+      "highlightLess": true,
+      "webpackOutput": "/tmp/",
+      "webpackConfig": {
+        "entry": {
+          "index": [
+            "/fixtures/integration/index.js"
+          ]
+        },
+        "module": {
+          "rules": [
+            {
+              "test": {},
+              "type": "asset/resource"
+            }
+          ]
+        },
+        "optimization": {
+          "concatenateModules": true
+        },
+        "output": {
+          "path": "/tmp/"
+        },
+        "plugins": []
+      },
+      "bundles": [
+        "/tmp/index.js"
+      ],
+      "size": 123,
+      "loadTime": 0.01,
+      "runTime": 1,
+      "totalTime": 1.01,
+      "passed": true
+    }
+  ],
+  "failed": false,
+  "missed": false
+}
+  
+  [42m[30mPackage size is 77 B less than limit[39m[49m
+  Size limit:   [32m[1m200 B[22m[39m
+  Size:         [32m[1m123 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  Loading time: [32m[1m10 ms[22m[39m [90mon slow 3G[39m
+  Running time: [32m[1m1 s  [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [32m[1m1.1 s[22m[39m
+  
+"
+`;
+
+exports[`shows debug on error 1`] = `
+"{
+  "cwd": "/tmp/",
+  "configPath": "package.json",
+  "checks": [
+    {
+      "limit": "200 s",
+      "files": [
+        "/fixtures/internal-error/index.js"
+      ],
+      "name": "index.js",
+      "timeLimit": 200
+    }
+  ]
+}
+[41m[30m ERROR [39m[49m [31mAdd [33m@size-limit/file[31m plugin to Size Limit[39m
+"
+`;
+
+exports[`shows error on missed package.json 1`] = `
+"[41m[30m ERROR [39m[49m [31mSize Limit didn’t find [33mpackage.json[31m.
+        Create npm package and run Size Limit there.[39m
+"
+`;
+
+exports[`shows error on time bigger than limit 1`] = `
+"  
+  [31mTotal time limit has exceeded[39m
+  Time limit:   [31m[1m1 s[22m[39m
+  Size:         [31m[1m123 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  Loading time: [31m[1m10 ms[22m[39m [90mon slow 3G[39m
+  Running time: [31m[1m1 s  [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [31m[1m1.1 s[22m[39m
+  
+  [33mTry to reduce size or increase limit in [1m"size-limit"[22m section of [1mpackage.json[22m[39m
+"
+`;
+
+exports[`shows error on time bigger than limit. in silent mode 1`] = `
+"  
+  [31mTotal time limit has exceeded[39m
+  Time limit:   [31m[1m1 s[22m[39m
+  Size:         [31m[1m123 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  Loading time: [31m[1m10 ms[22m[39m [90mon slow 3G[39m
+  Running time: [31m[1m1 s  [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [31m[1m1.1 s[22m[39m
+  
+  [33mTry to reduce size or increase limit in [1m"size-limit"[22m section of [1mpackage.json[22m[39m
+"
+`;
+
+exports[`shows error when file not found for simple case 1`] = `
+"  
+  [31mSize Limit can’t find files at folder/index.js[39m
+"
+`;
+
+exports[`shows error when file not found for webpack 1`] = `
+"  
+  [31mSize Limit can’t find files at dist/*.js[39m
+"
+`;
+
+exports[`shows error when using brotli without file 1`] = `
+"[31mInstall Size Limit preset depends on type of the project[39m
+
+For application, where you send JS bundle directly to users
+  [33mnpm install --save-dev @size-limit/preset-app[39m
+
+For frameworks, components and big libraries
+  [33mnpm install --save-dev @size-limit/preset-big-lib[39m
+
+For small (< 10 kB) libraries
+  [33mnpm install --save-dev @size-limit/preset-small-lib[39m
+
+Check out docs for more complicated cases
+  [33mhttps://github.com/ai/size-limit/[39m
+"
+`;
+
+exports[`shows gzip text when brotli and gzip in config 1`] = `
+"  
+  Size limit:   [32m[1m1 kB[22m[39m
+  Size:         [32m[1m0 B [22m[39m [90mwith all dependencies, minified and gzipped[39m
+  Loading time: [32m[1m0 ms[22m[39m [90mon slow 3G[39m
+  Running time: [32m[1m1 s [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [32m[1m1 s[22m[39m
+  
+"
+`;
+
+exports[`shows gzip text when only gzip in config 1`] = `
+"  
+  Size limit:   [32m[1m1 kB[22m[39m
+  Size:         [32m[1m0 B [22m[39m [90mwith all dependencies, minified and gzipped[39m
+  Loading time: [32m[1m0 ms[22m[39m [90mon slow 3G[39m
+  Running time: [32m[1m1 s [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [32m[1m1 s[22m[39m
+  
+"
+`;
+
+exports[`shows help 1`] = `
+"[33msize-limit [OPTION]… [FILE]…[39m
+Check the real performance cost of your front-end project to users
+
+[1mCore options:[22m
+  [33m--limit LIMIT[39m     Set size or running time limit for files
+  [33m--json[39m            Show results in JSON format
+  [33m--hide-passed[39m     Print only failed files
+  [33m--highlight-less[39m  Highlight files with less than limit size
+  [33m--help[39m            Display this help
+  [33m--watch[39m           Runs in watch mode
+  [33m--silent[39m          Show only failed limits
+  [33m--debug[39m           Show internal configs for issue report
+  [33m--save-bundle DIR[39m Write output bundle to disk for manual review
+  [33m--version[39m         Display version
+
+[1mExamples:[22m
+  [33msize-limit[39m
+    Read configuration from [1mpackage.json[22m or [1m.size-limit.json[22m and check limit
+[33m  size-limit index.js[39m
+    Show the size of specific files
+"
+`;
+
+exports[`shows migration guide for npm users 1`] = `
+"[31mInstall Size Limit preset depends on type of the project[39m
+
+For application, where you send JS bundle directly to users
+  [33mnpm install --save-dev @size-limit/preset-app[39m
+
+For frameworks, components and big libraries
+  [33mnpm install --save-dev @size-limit/preset-big-lib[39m
+
+For small (< 10 kB) libraries
+  [33mnpm install --save-dev @size-limit/preset-small-lib[39m
+
+Check out docs for more complicated cases
+  [33mhttps://github.com/ai/size-limit/[39m
+"
+`;
+
+exports[`shows migration guide for npm users: config 1, dep 0 1`] = `
+"[31mInstall Size Limit preset depends on type of the project[39m
+
+For application, where you send JS bundle directly to users
+  [33mnpm install --save-dev @size-limit/preset-app[39m
+
+For frameworks, components and big libraries
+  [33mnpm install --save-dev @size-limit/preset-big-lib[39m
+
+For small (< 10 kB) libraries
+  [33mnpm install --save-dev @size-limit/preset-small-lib[39m
+
+Check out docs for more complicated cases
+  [33mhttps://github.com/ai/size-limit/[39m
+
+You need to add size-limit dependency: [33mnpm install --save-dev size-limit[39m
+"
+`;
+
+exports[`shows migration guide for pnpm users 1`] = `
+"[31mInstall Size Limit preset depends on type of the project[39m
+
+For application, where you send JS bundle directly to users
+  [33mpnpm add --save-dev @size-limit/preset-app[39m
+
+For frameworks, components and big libraries
+  [33mpnpm add --save-dev @size-limit/preset-big-lib[39m
+
+For small (< 10 kB) libraries
+  [33mpnpm add --save-dev @size-limit/preset-small-lib[39m
+
+Check out docs for more complicated cases
+  [33mhttps://github.com/ai/size-limit/[39m
+"
+`;
+
+exports[`shows migration guide for yarn users 1`] = `
+"[31mInstall Size Limit preset depends on type of the project[39m
+
+For application, where you send JS bundle directly to users
+  [33myarn add --dev @size-limit/preset-app[39m
+
+For frameworks, components and big libraries
+  [33myarn add --dev @size-limit/preset-big-lib[39m
+
+For small (< 10 kB) libraries
+  [33myarn add --dev @size-limit/preset-small-lib[39m
+
+Check out docs for more complicated cases
+  [33mhttps://github.com/ai/size-limit/[39m
+"
+`;
+
+exports[`shows nothing in silent mode and success check 1`] = `
+"  
+[1A[2K"
+`;
+
+exports[`shows size-limit dependency warning 1`] = `""`;
+
+exports[`shows webpack-related help 1`] = `
+"[33msize-limit [OPTION]… [FILE]…[39m
+Check the real performance cost of your front-end project to users
+
+[1mCore options:[22m
+  [33m--limit LIMIT[39m     Set size or running time limit for files
+  [33m--json[39m            Show results in JSON format
+  [33m--hide-passed[39m     Print only failed files
+  [33m--highlight-less[39m  Highlight files with less than limit size
+  [33m--help[39m            Display this help
+  [33m--watch[39m           Runs in watch mode
+  [33m--silent[39m          Show only failed limits
+  [33m--debug[39m           Show internal configs for issue report
+  [33m--save-bundle DIR[39m Write output bundle to disk for manual review
+  [33m--version[39m         Display version
+
+[1mWebpack options:[22m
+  [33m--why[39m              Show package content
+  [33m--compare-with[39m     Path to stats.json from another build to compare
+  [33m--save-bundle DIR[39m  Put build files to check them by hand
+  [33m--clean-dir[39m        Remove build files folder before start
+
+[1mExamples:[22m
+  [33msize-limit[39m
+    Read configuration from [1mpackage.json[22m or [1m.size-limit.json[22m and check limit
+[33m  size-limit index.js[39m
+    Show the size of specific files with all file dependencies
+  [33msize-limit --why[39m
+    Show reasons why project have this size
+"
+`;
+
+exports[`supports import and ignore for esbuild 1`] = `
+"  
+  [42m[30mPackage size is 4 B less than limit[39m[49m
+  Size limit: [32m[1m5 B[22m[39m
+  Size:       [32m[1m1 B[22m[39m [90mwith all dependencies and minified[39m
+  
+"
+`;
+
+exports[`supports import and ignore for esbuild and brotli 1`] = `
+"  
+  [42m[30mPackage size is 48 B less than limit[39m[49m
+  Size limit: [32m[1m49 B[22m[39m
+  Size:       [32m[1m1 B [22m[39m [90mwith all dependencies, minified and brotlied[39m
+  
+"
+`;
+
+exports[`supports import and ignore for esbuild and gzip 1`] = `
+"  
+  Size limit: [32m[1m46 B[22m[39m
+  Size:       [32m[1m46 B[22m[39m [90mwith all dependencies, minified and gzipped[39m
+  
+"
+`;
+
+exports[`supports path without dot 1`] = `
+"  
+  [42m[30mPackage size is 77 B less than limit[39m[49m
+  Size limit: [32m[1m200 B[22m[39m
+  Size:       [32m[1m123 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  
+"
+`;
+
+exports[`throws on --clean-dir argument without --save-bundle 1`] = `
+"[41m[30m ERROR [39m[49m [31mArgument [33m--clean-dir[31m works only with [33m--save-bundle[31m argument[39m
+"
+`;
+
+exports[`throws on --compare-with argument without --why 1`] = `
+"[41m[30m ERROR [39m[49m [31mArgument [33m--compare-with[31m works only with [33m--why[31m argument[39m
+"
+`;
+
+exports[`throws on --compare-with argument without value 1`] = `
+"[41m[30m ERROR [39m[49m [31mMissing parameter [33mFILE[31m for [33m--compare-with[31m argument[39m
+"
+`;
+
+exports[`throws on --compare-with argument without webpack 1`] = `
+"[41m[30m ERROR [39m[49m [31mArgument [33m--compare-with[31m works only with [33m@size-limit/webpack[31m plugin and [33m@size-limit/webpack-why[31m plugin.
+        You can add Bundle Analyzer to you own bundler.[39m
+"
+`;
+
+exports[`throws on --config argument without FILE parameter 1`] = `
+"[41m[30m ERROR [39m[49m [31mMissing parameter [33mFILE[31m for [33m--config[31m argument[39m
+"
+`;
+
+exports[`throws on --config argument without FILE parameter 2`] = `
+"[41m[30m ERROR [39m[49m [31mMissing parameter [33mFILE[31m for [33m--config[31m argument[39m
+"
+`;
+
+exports[`throws on --save-bundle argument without DIR parameter 1`] = `
+"[41m[30m ERROR [39m[49m [31mMissing parameter [33mDIR[31m for [33m--save-bundle[31m argument[39m
+"
+`;
+
+exports[`throws on --save-bundle argument without DIR parameter 2`] = `
+"[41m[30m ERROR [39m[49m [31mMissing parameter [33mDIR[31m for [33m--save-bundle[31m argument[39m
+"
+`;
+
+exports[`throws on --save-bundle argument without webpack 1`] = `
+"[41m[30m ERROR [39m[49m [31mArgument [33m--save-bundle[31m needs [33m@size-limit/webpack[31m or [33m@size-limit/esbuild[31m plugin[39m
+"
+`;
+
+exports[`throws on --why argument with esbuild but without esbuild-why 1`] = `
+"[41m[30m ERROR [39m[49m [31mArgument [33m--why[31m works only with [33m@size-limit/esbuild[31m plugin and [33m@size-limit/esbuild-why[31m plugin.
+        You can add Bundle Analyzer to you own bundler.[39m
+"
+`;
+
+exports[`throws on --why argument without webpack 1`] = `
+"[41m[30m ERROR [39m[49m [31mArgument [33m--why[31m works only with [33m@size-limit/webpack[31m plugin and [33m@size-limit/webpack-why[31m plugin.
+        You can add Bundle Analyzer to you own bundler.[39m
+"
+`;
+
+exports[`throws on brotli option without brotli plugin 1`] = `
+"[41m[30m ERROR [39m[49m [31mConfig option [33mbrotli[31m needs [33m@size-limit/file[31m plugin[39m
+"
+`;
+
+exports[`throws on empty config 1`] = `
+"[41m[30m ERROR [39m[49m [31mSize Limit config must [33mnot be empty[31m[39m
+
+  [32m"size-limit"[39m: [
+    {
+      [32m"path"[39m: [33m"dist/bundle.js"[39m,
+      [32m"limit"[39m: [33m"10 kB"[39m
+    }
+  ]
+"
+`;
+
+exports[`throws on no config 1`] = `
+"[41m[30m ERROR [39m[49m [31mCreate Size Limit config in [33mpackage.json[31m[39m
+
+  [32m"size-limit"[39m: [
+    {
+      [32m"path"[39m: [33m"dist/bundle.js"[39m,
+      [32m"limit"[39m: [33m"10 kB"[39m
+    }
+  ]
+"
+`;
+
+exports[`throws on non-array config 1`] = `
+"[41m[30m ERROR [39m[49m [31mSize Limit config must contain [33man array[31m[39m
+
+  [32m"size-limit"[39m: [
+    {
+      [32m"path"[39m: [33m"dist/bundle.js"[39m,
+      [32m"limit"[39m: [33m"10 kB"[39m
+    }
+  ]
+"
+`;
+
+exports[`throws on non-object check 1`] = `
+"[41m[30m ERROR [39m[49m [31mSize Limit config array should contain [33monly objects[31m[39m
+
+  [32m"size-limit"[39m: [
+    {
+      [32m"path"[39m: [33m"dist/bundle.js"[39m,
+      [32m"limit"[39m: [33m"10 kB"[39m
+    }
+  ]
+"
+`;
+
+exports[`throws on non-string entry 1`] = `
+"[41m[30m ERROR [39m[49m [31mThe [33mentry[31m in Size Limit config must be [33ma string[31m or [33man array of strings[31m[39m
+"
+`;
+
+exports[`throws on non-string path 1`] = `
+"[41m[30m ERROR [39m[49m [31mThe [33mpath[31m in Size Limit config must be [33ma string[31m or [33man array of strings[31m[39m
+
+  [32m"size-limit"[39m: [
+    {
+      [32m"path"[39m: [33m"dist/bundle.js"[39m,
+      [32m"limit"[39m: [33m"10 kB"[39m
+    }
+  ]
+"
+`;
+
+exports[`throws on running option without time plugin 1`] = `
+"[41m[30m ERROR [39m[49m [31mConfig option [33mrunning[31m needs [33m@size-limit/time[31m plugin[39m
+"
+`;
+
+exports[`throws on time limit without time plugin 1`] = `
+"[41m[30m ERROR [39m[49m [31mAdd [33m@size-limit/time[31m plugin to use time limit[39m
+"
+`;
+
+exports[`throws on unknown argument 1`] = `
+"[41m[30m ERROR [39m[49m [31mUnknown argument [33m--unknown[31m.
+        Check command for typo and read docs.[39m
+"
+`;
+
+exports[`throws on unknown option 1`] = `
+"[41m[30m ERROR [39m[49m [31mUnknown option [33munknown[31m in config.
+        Check Size Limit docs and version.[39m
+"
+`;
+
+exports[`throws on webpack option without webpack plugin 1`] = `
+"[41m[30m ERROR [39m[49m [31mConfig option [33mwebpack[31m needs [33m@size-limit/webpack[31m plugin[39m
+"
+`;
+
+exports[`throws on webpack option without webpack plugin 2`] = `
+"[41m[30m ERROR [39m[49m [31mConfig option [33mignore[31m needs [33m@size-limit/webpack[31m or [33m@size-limit/esbuild[31m plugin[39m
+"
+`;
+
+exports[`throws on webpack option without webpack plugin 3`] = `
+"[41m[30m ERROR [39m[49m [31mConfig option [33mconfig[31m needs [33m@size-limit/webpack[31m or [33m@size-limit/esbuild[31m plugin[39m
+"
+`;
+
+exports[`uses dependencies to detect plugins 1`] = `
+"[33msize-limit [OPTION]… [FILE]…[39m
+Check the real performance cost of your front-end project to users
+
+[1mCore options:[22m
+  [33m--limit LIMIT[39m     Set size or running time limit for files
+  [33m--json[39m            Show results in JSON format
+  [33m--hide-passed[39m     Print only failed files
+  [33m--highlight-less[39m  Highlight files with less than limit size
+  [33m--help[39m            Display this help
+  [33m--watch[39m           Runs in watch mode
+  [33m--silent[39m          Show only failed limits
+  [33m--debug[39m           Show internal configs for issue report
+  [33m--save-bundle DIR[39m Write output bundle to disk for manual review
+  [33m--version[39m         Display version
+
+[1mWebpack options:[22m
+  [33m--why[39m              Show package content
+  [33m--compare-with[39m     Path to stats.json from another build to compare
+  [33m--save-bundle DIR[39m  Put build files to check them by hand
+  [33m--clean-dir[39m        Remove build files folder before start
+
+[1mExamples:[22m
+  [33msize-limit[39m
+    Read configuration from [1mpackage.json[22m or [1m.size-limit.json[22m and check limit
+[33m  size-limit index.js[39m
+    Show the size of specific files with all file dependencies
+  [33msize-limit --why[39m
+    Show reasons why project have this size
+"
+`;
+
+exports[`works in integration test with JSON 1`] = `
+"[
+  {
+    "name": "index.js",
+    "passed": true,
+    "size": 123,
+    "sizeLimit": 200,
+    "running": 1,
+    "loading": 0.01
+  }
+]
+"
+`;
+
+exports[`works in integration test with size 1`] = `
+"  
+  [42m[30mPackage size is 77 B less than limit[39m[49m
+  Size limit:   [32m[1m200 B[22m[39m
+  Size:         [32m[1m123 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  Loading time: [32m[1m10 ms[22m[39m [90mon slow 3G[39m
+  Running time: [32m[1m1 s  [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [32m[1m1.1 s[22m[39m
+  
+"
+`;
+
+exports[`works in integration test with time 1`] = `
+"  
+  Time limit:   [32m[1m2 s[22m[39m
+  Size:         [32m[1m123 B[22m[39m [90mwith all dependencies, minified and brotlied[39m
+  Loading time: [32m[1m10 ms[22m[39m [90mon slow 3G[39m
+  Running time: [32m[1m1 s  [22m[39m [90mon Snapdragon 410[39m
+  Total time:   [32m[1m1.1 s[22m[39m
+  
+"
+`;

@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "webpack",
+  "devDependencies": {
+    "@size-limit/webpack": ">= 0.0.0",
+    "@size-limit/webpack-why": ">= 0.0.0",
+    "size-limit": ">= 0.0.0"
+  },
+  "size-limit": [
+    {
+      "entry": "a",
+      "config": "./webpack.config.js"
+    }
+  ]
+}

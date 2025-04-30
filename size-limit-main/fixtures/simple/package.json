@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "simple",
+  "devDependencies": {
+    "@size-limit/file": ">= 0.0.0",
+    "size-limit": ">= 0.0.0"
+  },
+  "size-limit": [
+    {
+      "name": "index",
+      "limit": "1 kB"
+    }
+  ]
+}

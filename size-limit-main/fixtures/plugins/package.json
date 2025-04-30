@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "size-limit-node-esbuild": ">=0.0.0"
+  }
+}
